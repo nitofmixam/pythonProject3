@@ -4,3 +4,18 @@ class Product:
         self.description = description
         self.price = price
         self.quantity = quantity
+
+    @staticmethod
+    def create_product(name, price, quantity):
+        return Product(name, price, quantity)
+
+    @property
+    def price(self):
+        return self.__price
+
+    @price.setter
+    def price(self, new_price: float):
+        if new_price <= 0:
+            print("Ошибка: Цена введена некорректно. Цена должна быть больше нуля.")
+        else:
+            self.__price = new_price
