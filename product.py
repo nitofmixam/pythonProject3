@@ -2,7 +2,7 @@ class Product:
     def __init__(self, name: str, description: str, price: float, quantity: int):
         self.name = name
         self.description = description
-        self.price = price
+        self.__price = price
         self.quantity = quantity
 
     @staticmethod
@@ -14,7 +14,7 @@ class Product:
         return self.__price
 
     @price.setter
-    def price(self, price):
-        if price <= 0:
+    def price(self, __price):
+        if __price <= 0:
             print("Ошибка: Цена введена некорректно. Цена должна быть больше нуля.")
 
