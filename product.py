@@ -14,8 +14,7 @@ class Product:
         return self.__price
 
     @price.setter
-    def price(self, new_price: float):
-        if new_price <= 0:
+    def price(self, price):
+        if price <= 0:
             print("Ошибка: Цена введена некорректно. Цена должна быть больше нуля.")
-        else:
-            self.__price = new_price
+
