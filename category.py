@@ -27,3 +27,11 @@ class Category:
         for product in self.__products:
             formatted_products.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.")
         return formatted_products
+
+    @property
+    def __len__(self):
+        return sum(product.quantity for product in self.__products)
+
+    def __str__(self):
+        total_quantity = len(self)
+        return f"{self.name}, количество продуктов: {total_quantity} шт."

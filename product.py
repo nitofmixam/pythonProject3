@@ -18,3 +18,12 @@ class Product:
         if __price <= 0:
             print("Ошибка: Цена введена некорректно. Цена должна быть больше нуля.")
 
+    def __add__(self, other):
+        total_value = (self.price * self.quantity) + (other.price * other.quantity)
+        return total_value
+
+
+a = Product("a", "Товар", 10, 100)
+b = Product("b", "Товар", 2, 200)
+result = a + b
+print(result)
