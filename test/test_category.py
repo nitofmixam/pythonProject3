@@ -17,3 +17,18 @@ def test_get_products_formatted():
     ]
 
     assert category.get_products_formatted == expected_output
+
+
+def test_category_str():
+    c = Category("Товар", "Описание")
+    assert str(c) == "Товар, количество продуктов: 0 шт."
+
+
+def test_add_product():
+    cat = Category("Товар", "Описание")
+    assert len(cat.get_products) == 0
+    product = Product("Товар", "Описание", 50, 10)
+    cat.add_product(product)
+    assert len(cat.get_products) == 1
+
+

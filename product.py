@@ -6,8 +6,8 @@ class Product:
         self.quantity = quantity
 
     @staticmethod
-    def create_product(name, price, quantity):
-        return Product(name, price, quantity)
+    def create_product(name, __price, quantity):
+        return Product(name, __price, quantity)
 
     @property
     def price(self):
@@ -20,7 +20,6 @@ class Product:
 
     def __str__(self):
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
-
 
     def __add__(self, other):
         total_value = (self.price * self.quantity) + (other.price * other.quantity)

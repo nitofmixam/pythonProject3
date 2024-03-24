@@ -29,9 +29,9 @@ class Category:
         return formatted_products
 
     @property
-    def __len__(self):
+    def __len__(self) -> int:
         return sum(product.quantity for product in self.__products)
 
-    def __str__(self):
-        total_quantity = len(self)
+    def __str__(self) -> str:
+        total_quantity = len(self.__products)
         return f"{self.name}, количество продуктов: {total_quantity} шт."
