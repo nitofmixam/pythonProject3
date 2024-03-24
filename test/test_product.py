@@ -12,8 +12,17 @@ def test_product_instance():
 
 
 def test_set_price_negative():
-    product = Product("Phone", "Smartphone", 800, 5)
+    product = Product("Товар", "Описание", 800, 5)
     product.price = -500
     assert product.price == 800  # Цена не изменилась из-за ошибки
+
+
+def test_product_to_string():
+    product = Product("Товар", "Описание", 50, 10)
+    expected_string = "Товар, 50 руб. Остаток: 10 шт."
+    assert str(product) == expected_string
+
+
+
 
 
