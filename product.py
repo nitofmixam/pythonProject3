@@ -5,6 +5,25 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+
+class Smartphone(Product):
+    def __init__(self, name: str, description: str, price: float, quantity: int,
+                 performance: int, model: str, memory: float, color: str):
+        super().__init__(name, description, price, quantity)
+        self.performance = performance
+        self.model = model
+        self.memory = memory
+        self.color = color
+
+
+class LawnGrass(Product):
+    def __init__(self, name: str, description: str, price: float,
+                 quantity: int, country: str, germination_period: str, color: str):
+        super().__init__(name, description, price, quantity)
+        self.country = country
+        self.germination_period = germination_period
+        self.color = color
+
     @staticmethod
     def create_product(name, __price, quantity):
         return Product(name, __price, quantity)
@@ -19,14 +38,11 @@ class Product:
             print("Ошибка: Цена введена некорректно. Цена должна быть больше нуля.")
 
     def __str__(self):
-        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
-        total_value = (self.price * self.quantity) + (other.price * other.quantity)
-        return total_value
+        if type(self) != type(other):
+            raise TypeError("Можно складывать только товары одного класса")
+        total_quantity = self.quantity + other.quantity
+        return Product(f"{self.name} + {other.name}", self.price, total_quantity)
 
-
-a = Product("a", "Товар", 10, 100)
-b = Product("b", "Товар", 2, 200)
-result = a + b
-print(result)

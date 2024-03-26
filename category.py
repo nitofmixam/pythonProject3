@@ -1,3 +1,6 @@
+from product import Product
+
+
 class Category:
     """
     Класс для категорий товара
@@ -14,8 +17,11 @@ class Category:
         Category.product_count += len(self.__products)
 
     def add_product(self, product):
-        self.__products.append(product)
-        Category.product_count += 1
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category.product_count += 1
+        else:
+            print("Ошибка: Можно добавлять только объекты класса Product или его подклассов.")
 
     @property
     def get_products(self):
