@@ -7,8 +7,9 @@ class Product:
 
     @staticmethod
     def create_product(name, price, quantity):
-        if isinstance(Product(name, price, quantity), Product):
-            return Product(name, price, quantity)
+        new_product = Product(name, price, quantity)
+        if isinstance(new_product, Product):
+            return new_product
         else:
             raise TypeError("Можно создавать только объекты класса Product или его наследников")
 
