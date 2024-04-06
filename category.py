@@ -17,11 +17,21 @@ class Category:
         Category.product_count += len(self.__products)
 
     def add_product(self, product):
+        if product.quantity == 0:
+            raise ValueError("Товар с нулевым значением не может быть добавлен")
         if isinstance(product, Product):
             self.__products.append(product)
             Category.product_count += 1
         else:
             print("Ошибка: Можно добавлять только объекты класса Product или его подклассов.")
+
+    def average_price_tag(self):
+        try:
+            total_price = sum(product.price for product in self.__products)
+            average_price = total_price / len(self.__products)
+            return f"Средняя цена товара: {average_price} руб."
+        except ZeroDivisionError:
+            return 0
 
     @property
     def get_products(self):
